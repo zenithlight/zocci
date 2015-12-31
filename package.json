@@ -1,0 +1,34 @@
+{
+  "name": "zocci",
+  "description": "Simple JSON storage",
+  "version": "0.0.4",
+  "license": "MIT",
+  "author": "Anatol Sommer <anatol@anatol.at>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/anatolsommer/zocci.git"
+  },
+  "keywords": [
+    "json",
+    "storage",
+    "deep",
+    "simple"
+  ],
+  "dependencies": {
+  },
+  "devDependencies": {
+    "mocha": "~2.1.0",
+    "blanket": "alex-seville/blanket#development"
+  },
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "scripts": {
+    "test": "mocha test --check-leaks",
+    "test-cov": "mocha test --require blanket -R html-cov > coverage.html",
+    "test-html": "mocha test -R doc > tests.html"
+  },
+  "config": {
+    "blanket": { "pattern": "/zocci/lib/" }
+  }
+}
