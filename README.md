@@ -34,4 +34,12 @@ store.remove('one');
 store.remove('foo.bar', function(err) {
   // Saved
 });
+
+store.on('change', function(key, value) {
+  if (value===null) {
+    // key was removed
+  } else {
+    // key was set to value
+  }
+});
 ```

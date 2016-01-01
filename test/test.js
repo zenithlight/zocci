@@ -81,6 +81,26 @@ describe('Store', function() {
     store.remove('path');
     assert.equal(store.find('').length, 2);
   });
+  it('should emit change event on "set"', function() {
+    var args;
+    store.on('change', function() {
+      args=arguments;
+    });
+    store.set('foo', 'bar');
+    assert(args);
+    assert.equal(args[0], 'foo');
+    assert.equal(args[1], 'bar');
+  });
+  it('should emit change event on "remove"', function() {
+    var args;
+    store.on('change', function() {
+      args=arguments;
+    });
+    store.remove('foo');
+    assert(args);
+    assert.equal(args[0], 'foo');
+    assert.equal(args[1], null);
+  });
   it('should unlink store', function(done) {
     unlinkStore(store, done);
   });
