@@ -43,3 +43,9 @@ store.on('change', function(key, value) {
   }
 });
 ```
+
+
+## License
+
+#### MIT
+
