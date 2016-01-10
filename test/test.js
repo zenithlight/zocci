@@ -81,6 +81,15 @@ describe('Store', function() {
     store.remove('path');
     assert.equal(store.find('').length, 2);
   });
+  it('should use subSelector', function() {
+    var app;
+    app=store.subSelector('app');
+    store.set('app', {app1:{name:'one'}, app2:{name:'two'}});
+    app('app3').set('name', 'three');
+    assert.json_equal(app('app1').get(), {name:'one'});
+    assert.equal(app('app2').get('name'), 'two');
+    assert.json_equal(app('app3').get(), {name:'three'});
+  });
   it('should emit change event on "set"', function() {
     var args;
     store.on('change', function() {
