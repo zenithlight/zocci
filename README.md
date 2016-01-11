@@ -45,6 +45,39 @@ store.on('change', function(key, value) {
 ```
 
 
+### Change delimiter:
+```js
+var Zocci=require('zocci'), store=new Zocci('./test.json', ':');
+
+store.set('foo', {bar:'baz'});
+store.get('foo:bar');          // 'baz'
+
+store.set('one:two:three', 3);
+store.get('one');              // { two: { three: 3 } }
+```
+
+
+### subSelector:
+```js
+var Zocci=require('zocci'), config=new Zocci('./config.json', ':'), hostConfig;
+
+config.set('httpPort', 80);
+config.set('hosts', {
+  'example.com':{port:3001},
+  'example.org':{port:3002, https:{enabled:false}}
+});
+
+hostConfig=config.subSelector('hosts');
+
+hostConfig('example.com').get('port');    // 3001
+hostConfig('example.com').get();          // {port:3001}
+
+hostConfig('example.org').set('https:enabled', true);
+// equivalent to
+config.set('hosts:example.org:https:enabled', true);
+```
+
+
 ## License
 
 #### MIT
