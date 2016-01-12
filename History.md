@@ -1,8 +1,9 @@
-0.1.1 / 2016-01-
+0.2.0 / 2016-01-12
 ==================
 
-  *
-  * added LICENSE
+  * added subSelector
+  * improved documentation
+  * added LICENSE file
 
 0.1.0 / 2016-01-01
 ==================
