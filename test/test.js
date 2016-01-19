@@ -17,7 +17,7 @@ if (~process.argv.indexOf('html-cov')) {
 }
 
 describe('Store', function() {
-  var store;
+  var store, app;
 
   it('should create a new Zocci store', function() {
     store=new Zocci(__dirname+'/test-'+rnd()+'.json');
@@ -85,13 +85,18 @@ describe('Store', function() {
     assert.equal(store.find('').length, 2);
   });
   it('should use subSelector', function() {
-    var app;
     app=store.subSelector('app');
-    store.set('app', {app1:{name:'one'}, app2:{name:'two'}});
+  });
+  it('should use subSelector.set and get', function() {
+    store.set('app', {app1:{name:'one'}, app2:{name:'two', x:2}});
     app('app3').set('name', 'three');
     assert.json_equal(app('app1').get(), {name:'one'});
     assert.equal(app('app2').get('name'), 'two');
     assert.json_equal(app('app3').get(), {name:'three'});
+  });
+  it('should use subSelector.remove', function() {
+    app('app2').remove('name');
+    assert.json_equal(app('app2').get(), {x:2});
   });
   it('should emit change event on "set"', function() {
     var args;
