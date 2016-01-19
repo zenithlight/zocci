@@ -1,5 +1,5 @@
 # Zocci
-## Simple JSON storage
+Simple JSON storage
 
 ### Usage:
 ```js
@@ -70,7 +70,8 @@ config.set('hosts', {
 hostConfig=config.subSelector('hosts');
 
 hostConfig('example.com').get('port');    // 3001
-hostConfig('example.com').get();          // {port:3001}
+hostConfig('example.com').get();          // { port: 3001 }
+hostConfig('example.com').remove('port');
 
 hostConfig('example.org').set('https:enabled', true);
 // equivalent to

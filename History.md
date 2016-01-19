@@ -1,3 +1,9 @@
+0.2.1 / 2016-01-19
+==================
+
+  * make get() return all data
+  * added subSelector.remove
+
 0.2.0 / 2016-01-12
 ==================
 
