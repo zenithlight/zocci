@@ -32,6 +32,9 @@ describe('Store', function() {
   it('should get "port"', function() {
     assert.equal(store.get('port'), 80);
   });
+  it('should get complete object', function() {
+    assert.json_equal(store.get(), {port:80});
+  });
   it('should set "names" (array)', function() {
     store.set('names', ['test0', 'test1']);
   });
